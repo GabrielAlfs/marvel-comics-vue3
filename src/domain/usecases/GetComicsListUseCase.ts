@@ -9,6 +9,9 @@ export type GetComicsListUseCasePort = {
   };
 };
 
+/**
+ * Caso de Uso de Listagem de Quadrinhos
+ */
 export interface GetComicsListUseCase {
   execute(port: GetComicsListUseCasePort): Promise<Paginated<ComicEntity>>;
 }

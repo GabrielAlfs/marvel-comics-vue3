@@ -4,6 +4,9 @@ export type ComicPreview = {
   price: number;
 };
 
+/**
+ * @type {ComicEntity} - Entidade de Quadrinhos
+ */
 export interface ComicEntity extends ComicPreview {
   description: string | null;
   imageURL: string;
