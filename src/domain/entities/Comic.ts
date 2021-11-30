@@ -1,17 +1,12 @@
-type ComicImage = {
-  path: string;
-  extension: string;
-};
-
-type ComicPrice = {
-  type: string;
+export type ComicPreview = {
+  id: number;
+  title: string;
   price: number;
 };
 
-export type Comic = {
-  id: number;
-  title: string;
+export interface ComicEntity extends ComicPreview {
   description: string | null;
-  thumbnail: ComicImage;
-  prices: Array<ComicPrice>;
-};
+  imageURL: string;
+  creators: Array<string>;
+  characters: Array<string>;
+}

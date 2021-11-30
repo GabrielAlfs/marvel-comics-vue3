@@ -1,8 +1,10 @@
 import { ActionTree } from 'vuex';
-import { useGetComicsList } from '@/services/resources/comics';
 import { RootState } from '..';
 import { ComicsState } from './state';
 import { useRequestWrapper } from '../helpers';
+import { buildGetComicsListUseCase } from '@/application/factories/usecases/GetComicsList';
+
+const getComicsList = buildGetComicsListUseCase();
 
 export default {
   async fetchComics(
@@ -10,14 +12,13 @@ export default {
     { limit = 20, offset = 0, query, reset = false }
   ) {
     await useRequestWrapper(commit, async () => {
-      const { results } = await useGetComicsList({
+      const { items } = await getComicsList.execute({
         limit,
         offset,
         where: { titleStartsWith: query },
       });
 
-      commit('SET_PAGINATION', { limit, offset });
-      commit(reset ? 'SET_COMICS' : 'ADD_COMICS', results);
+      commit(reset ? 'SET_COMICS' : 'ADD_COMICS', items);
     });
   },
   clearStaged({ commit }) {

@@ -1,11 +1,11 @@
 import { createApp } from 'vue';
-import App from './App.vue';
-import './index.css';
-import router from './router';
+import '@/ui/assets/index.css';
+import router from '@/application/router';
+import store from '@/application/store';
+import App from '@/ui/App.vue';
 import BLoading from '@/ui/components/base/BLoading.vue';
 import BButton from '@/ui/components/forms/BButton.vue';
 import BInput from '@/ui/components/forms/BInput.vue';
-import store from './store';
 
 createApp(App)
   .component('b-loading', BLoading)

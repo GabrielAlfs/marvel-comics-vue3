@@ -42,7 +42,7 @@ export default defineComponent({
 
     const searchInput = useDebouncedRef(
       `${{ ...currentRoute.value.query }.titulo || ''}`,
-      400
+      600
     );
 
     watch(searchInput, (queryValue) => {

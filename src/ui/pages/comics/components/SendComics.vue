@@ -84,10 +84,10 @@
 import { defineComponent, computed, ref, watch } from 'vue';
 import { PaperAirplaneIcon } from '@heroicons/vue/outline';
 import { useStore } from 'vuex';
-import { useLoader } from '@/services/config/googlemaps';
 import { useGeolocation } from '@/ui/composables';
 import BDialog from '@/ui/components/base/BDialog.vue';
-import { useToast } from '@/store/helpers';
+import { useToast } from '@/application/store/helpers';
+import { useLoader } from '@/application/config/googlemaps';
 
 export default defineComponent({
   name: 'SendComics',

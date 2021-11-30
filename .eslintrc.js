@@ -19,6 +19,7 @@ module.exports = {
   rules: {
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
+    'no-empty-function': 'off',
     'import/prefer-default-export': 'off',
     'class-methods-use-this': 'off',
     'no-useless-constructor': 'off',

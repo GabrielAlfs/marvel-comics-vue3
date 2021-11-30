@@ -8,9 +8,6 @@ export default {
   ADD_COMICS(state, comics) {
     state.comics.push(...comics);
   },
-  SET_PAGINATION(state, { limit, offset }) {
-    Object.assign(state.pagination, { limit, offset });
-  },
   SELECT_COMIC(state, comicPreview) {
     state.selectedComics.unshift(comicPreview);
   },

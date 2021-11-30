@@ -12,10 +12,7 @@
         @input="toggleComic"
       />
     </div>
-    <img
-      :src="`${comic.thumbnail.path}.${comic.thumbnail.extension}`"
-      class="object-cover w-full h-36"
-    />
+    <img :src="comic.imageURL" class="object-cover w-full h-36" />
     <section class="divide-y">
       <div class="px-5 py-2">
         <div class="flex items-center gap-x-3">
@@ -27,7 +24,7 @@
           <div class="flex-grow"></div>
           <p class="text-gray-800 text-sm font-light">
             {{
-              comic.prices[0].price.toLocaleString('pt-BR', {
+              comic.price.toLocaleString('pt-BR', {
                 style: 'currency',
                 currency: 'BRL',
               })
@@ -63,7 +60,7 @@
 import { defineComponent, PropType, computed } from 'vue';
 import { InformationCircleIcon } from '@heroicons/vue/outline';
 import { useStore } from 'vuex';
-import { Comic } from '@/domain/entities/Comic';
+import { ComicEntity } from '@/domain/entities/Comic';
 
 export default defineComponent({
   name: 'ComicCard',
@@ -72,7 +69,7 @@ export default defineComponent({
   },
   props: {
     comic: {
-      type: Object as PropType<Comic>,
+      type: Object as PropType<ComicEntity>,
       required: true,
     },
   },
@@ -95,7 +92,7 @@ export default defineComponent({
         commit('comics/SELECT_COMIC', {
           id: props.comic.id,
           title: props.comic.title,
-          price: props.comic.prices[0].price,
+          price: props.comic.price,
         });
       }
     };
