@@ -16,6 +16,10 @@ Sistema simples que consome a API da Marvel para fornecer uma listagem de quadri
     1. Faça a build usando `npm run build` ou `yarn build`
     2. Veja o preview usando `npm run serve` ou `yarn serve`
 
+* **Testes**
+
+    1. Faça os testes usando `npm run test` ou `yarn test`
+
 ## Solução adotada
 
 Foi utilizado como arquitetura de projeto uma intepretação do `Clean Architecture` proposto por Robert C. Martin, assim como outros padrões de projetos comummente utilizados.
