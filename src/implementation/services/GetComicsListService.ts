@@ -25,6 +25,7 @@ export class GetComicsListService implements GetComicsListUseCase {
       query: {
         limit: port.limit,
         offset: port.offset,
+        orderBy: 'title',
         ...Object.fromEntries(
           Object.entries(port.where || {}).filter(([_, v]) => v !== '')
         ),
