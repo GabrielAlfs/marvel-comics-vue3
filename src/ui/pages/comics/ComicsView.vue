@@ -8,9 +8,9 @@
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-3"
       >
         <comic-card
-          v-for="(comic, index) in comics"
+          v-for="comic in comics"
           @detail="handleDetail"
-          :key="`comic-${index}`"
+          :key="`comic-${comic.id}`"
           :comic="comic"
         />
       </div>

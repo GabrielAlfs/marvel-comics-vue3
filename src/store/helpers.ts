@@ -26,7 +26,7 @@ export const useRequestWrapper = async (
   commit('SET_LOADING', true);
   try {
     await fn();
-  } catch (error) {
+  } catch (error: any) {
     useToast({
       message: error.response?.data?.message,
       description: error.response?.data?.message,

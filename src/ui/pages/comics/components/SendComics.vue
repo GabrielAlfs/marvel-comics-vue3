@@ -112,9 +112,9 @@ export default defineComponent({
       };
     });
 
-    const mapElement = ref(null);
+    const mapElement = ref<any>(null);
     const sendComicDialog = ref(false);
-    const map = ref(null);
+    const map = ref<any>(null);
 
     const loadMap = async () => {
       sendComicDialog.value = true;
