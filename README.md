@@ -2,6 +2,8 @@
 
 Sistema simples que consome a API da Marvel para fornecer uma listagem de quadrinhos, com opção de envio para uma localização no mapa. (Desenvolvido para o teste de front-end na empresa Brisanet)
 
+Demo: [Abrir](https://marvel-comics-vue3.vercel.app).
+
 ## Rodando o projeto
 
 * **Instalação e configuração**
