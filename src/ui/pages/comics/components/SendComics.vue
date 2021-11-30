@@ -1,10 +1,20 @@
 <template>
   <div class="fixed bottom-8 right-8 z-50">
     <button
-      class="relative rounded-full shadow-md bg-teal-700 p-3"
-      @click="loadMap"
+      :class="{
+        'bg-teal-700 cursor-pointer hover:translate-y-0 translate-y-3 hover:bg-teal-600':
+          selectedComics.length,
+        'cursor-not-allowed': !selectedComics.length,
+      }"
+      class="relative rounded-full shadow-md bg-gray-600 p-3 transform transition"
+      @click="selectedComics.length ? loadMap() : () => ({})"
     >
-      <paper-airplane-icon class="w-8 h-8 text-teal-100" />
+      <paper-airplane-icon
+        :class="{
+          'text-teal-100': selectedComics.length,
+        }"
+        class="w-8 h-8 text-gray-100"
+      />
       <div
         class="absolute rounded-full p-1 top-0 right-0 bg-red-600 text-white text-xs"
       >
@@ -80,6 +90,7 @@
 </template>
 
 <script lang="ts">
+/* eslint-disable no-undef */
 /* eslint-disable no-new */
 import { defineComponent, computed, ref, watch } from 'vue';
 import { PaperAirplaneIcon } from '@heroicons/vue/outline';
@@ -96,13 +107,12 @@ export default defineComponent({
     BDialog,
   },
   setup() {
-    const { state } = useStore();
-
+    const { state, commit } = useStore();
     const { coords } = useGeolocation();
 
     const currPos = ref({
-      lat: 0,
-      lng: 0,
+      lat: -7.22,
+      lng: -39.33,
     });
 
     watch(coords, () => {
@@ -114,18 +124,25 @@ export default defineComponent({
 
     const mapElement = ref<any>(null);
     const sendComicDialog = ref(false);
-    const map = ref<any>(null);
+    const map = ref<google.maps.Map | null>(null);
+    let marker: google.maps.Marker;
 
     const loadMap = async () => {
       sendComicDialog.value = true;
       await useLoader.load();
-      // eslint-disable-next-line no-undef
       map.value = new google.maps.Map(mapElement.value, {
         center: currPos.value,
         zoom: 8,
       });
       map.value.addListener('click', ({ latLng: { lat, lng } }) => {
         currPos.value = { lat: lat(), lng: lng() };
+
+        if (marker) marker.setMap(null);
+        marker = new google.maps.Marker({
+          position: currPos.value,
+          map: map.value,
+          title: 'Entregar aqui!',
+        });
       });
     };
 
@@ -135,6 +152,7 @@ export default defineComponent({
 
     const handleConfirm = () => {
       handleClose();
+      commit('comics/CLEAR_SELECTED_COMICS');
       useToast({
         message: 'Pedido enviado com sucesso!',
         description:

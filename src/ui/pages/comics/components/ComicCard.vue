@@ -1,12 +1,12 @@
 <template>
   <div class="relative border shadow overflow-hidden rounded-lg bg-white">
     <div
-      class="absolute w-full h-36 bg-gradient-to-tr opacity-40 to-black from-transparent cursor-pointer"
+      class="absolute w-full h-36 bg-gradient-to-tr opacity-30 to-black from-transparent cursor-pointer hover:opacity-50 transition-opacity"
       @click="toggleComic"
     ></div>
     <div class="absolute right-3 top-1 text-white">
       <input
-        class="rounded-sm bg-transparent border border-white text-teal-600 focus:ring-0 focus:outline-none w-5 h-5 cursor-pointer"
+        class="rounded-sm bg-transparent border border-white text-teal-600 focus:ring-0 focus:outline-none w-5 h-5 cursor-pointer transition-colors"
         type="checkbox"
         :checked="comicSelected"
         @input="toggleComic"

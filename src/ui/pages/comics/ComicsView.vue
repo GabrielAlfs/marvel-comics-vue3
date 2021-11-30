@@ -15,7 +15,10 @@
         />
       </div>
       <div class="my-2 mt-3">
-        <b-button :loading="loading" @click="handleLoadMore">
+        <b-button
+          :loading="loading"
+          @click="loading ? () => {} : handleLoadMore()"
+        >
           Carregar mais
         </b-button>
       </div>

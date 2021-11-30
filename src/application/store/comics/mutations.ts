@@ -14,6 +14,9 @@ export default {
   UNSELECT_COMIC(state, index) {
     state.selectedComics.splice(index, 1);
   },
+  CLEAR_SELECTED_COMICS(state) {
+    state.selectedComics = [];
+  },
   STAGE_COMIC(state, comic) {
     state.stagedComic = comic;
   },
